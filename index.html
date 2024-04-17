@@ -57,11 +57,11 @@ justify-content: center;
 }
 
 .page {
-
+    padding: 2px;
     width: auto;
-    height: 100vp;
+    height: 90vh;
     position: absolute;
-    background-color: white;
+    background-color: ;
     border: px solid #ccc;
     backface-visibility: hidden;
     transform-origin: left center;
@@ -73,13 +73,13 @@ justify-content: center;
     display: flex;
     justify-content: center; /* Center the buttons horizontally */
     width: 100%;
-    
     z-index: 99; /* Ensure the container is above other elements */
     position: absolute; /* Ensure it's positioned in flow */
 }
 
 .control-button {
-    margin: 0 20px; /* Space between buttons */
+    padding:60px;
+    margin: 0 60px; /* Space between buttons */
     z-index: 999; /* This z-index is higher than the container's to stay on top */
     background-color: #ddd;
     border: none;
@@ -90,6 +90,7 @@ justify-content: center;
 }
 
 #zoom-slider {
+    margin: 10px;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
@@ -121,6 +122,28 @@ justify-content: center;
     background: #4CAF50;
     cursor: pointer;
   }
+  .pseudo-iframe {
+    padding:60px;
+    left: 40vh;
+    width: 100vh; /* Responsive width */
+    height: 100vh; /* Adjustable height */
+    border: 1px solid #ccc; /* iFrame-like border */
+    overflow: auto; /* Scrollbar if content overflows */
+    position: relative; /* Positioning context for the content */
+    background: grey; /* Background color to mimic an iframe's default styling */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+}
+
+.iframe-content {
+    padding: 20px; /* Padding around the content */
+    height: auto; /* Adjust based on content size */
+    width: 100%; /* Fit to container width */
+    box-sizing: border-box; /* Includes padding in width calculation */
+}
+
     </style>
 </head>
 <body>
@@ -132,7 +155,12 @@ justify-content: center;
     <button id="prevPage">Previous</button>
     <button id="nextPage">Next</button>
   </div>
-
+  <br>
+  <br>
+  
+  <div style="text-align: center;">
+	<div class="pseudo-iframe">
+		<div class="iframe-content">
 <div id="container">
     <div id="flipbook">
         <div class="page"><img src="https://i.ibb.co/BNQ84bh/pg1.png"  style="height:90%;width:150%;" />
@@ -160,6 +188,9 @@ justify-content: center;
         </div>
     </div>
   </div>
+</div>
+</div>
+</div>
     </html>
     <script>
          let currentPageIndex = 0;
@@ -297,12 +328,6 @@ flipbook.addEventListener('touchend', e => {
     }
 }, { passive: false });
 
-// Set initial zoom level to 20
-window.addEventListener('load', () => {
-    const zoomSlider = document.getElementById('zoom-slider');
-    zoomSlider.value = 2;
-    zoomSlider.dispatchEvent(new Event('input'));
-});
 
 
     </script>
